@@ -219,4 +219,16 @@ export const TechIcon = {
       <path d="M12 3v2M12 19v2M3 12h2M19 12h2M5.5 5.5l1.4 1.4M17.1 17.1l1.4 1.4M5.5 18.5l1.4-1.4M17.1 6.9l1.4-1.4" />
     </svg>
   ),
+
+  // LinkedIn — rounded square badge with "in" mark (stylized profile glyph)
+  LinkedIn: ({ size = 16, stroke = "currentColor" }) => (
+    <svg width={size} height={size} viewBox="0 0 24 24" fill="none"
+      stroke={stroke} strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+      <rect x="3" y="3" width="18" height="18" rx="3" />
+      <circle cx="7.5" cy="8" r="1.2" fill={stroke} stroke="none" />
+      <path d="M7.5 11v6" />
+      <path d="M11 17v-6" />
+      <path d="M11 13.5a2.5 2.5 0 0 1 5 0V17" />
+    </svg>
+  ),
 };

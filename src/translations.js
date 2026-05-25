@@ -134,7 +134,7 @@ export const translations = {
       languages: [
         { name: "Spanish", level: "Native" },
         { name: "English", level: "C1"     },
-        { name: "Japonés",  level: "Begginer"}
+        { name: "Japanese",  level: "Begginer"}
       ],
     },
   },
@@ -250,7 +250,7 @@ export const translations = {
       hobbies: [
         { title: "Proyectos open-source",    detail: "Proyectos personales que se convierten en refactorizaciones de viernes por la noche." },
         { title: "Senderismo",               detail: "Fines de semana fuera de la ciudad — Ajusco, Nevado de Toluca, Cumbres." },
-        { title: "Lectura de tech y sci-fi", detail: "Actualmente leyendo sobre arquitectura limpia y Ted Chiang." },
+        { title: "Lectura de tech y sci-fi", detail: "Actualmente leyendo la guerra de los mundos y El origen de Dan Brown" },
         { title: "Juegos de estrategia",     detail: "Campañas cooperativas y por turnos — el mismo cerebro que al depurar." },
         { title: "Música y podcasts",        detail: "Lo-fi mientras programo, podcasts de IA y desarrollo de software." },
         { title: "Mañanas temprano",         detail: "Café, correr, trabajo profundo — los 90 minutos más productivos del día." },
