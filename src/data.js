@@ -98,6 +98,7 @@ export const RESUME = {
   languages: [
     { name: "Spanish", level: "Native", value: 1 },
     { name: "English", level: "C1",     value: 0.85 },
+    { name: "Japanese", level: "C1",     value: 0.10 }
   ],
 
   hobbies: [

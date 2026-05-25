@@ -88,7 +88,8 @@ ul, ol { list-style: none; }
 .topbar-right {
   display: inline-flex; align-items: center; gap: 8px;
 }
-.theme-toggle {
+.theme-toggle,
+.lang-toggle {
   font-size: 11px;
   padding: 6px 10px;
   background: var(--bg);
@@ -97,9 +98,19 @@ ul, ol { list-style: none; }
   letter-spacing: 0.04em;
   transition: background .2s ease, color .2s ease;
 }
-.theme-toggle:hover {
+.theme-toggle:hover,
+.lang-toggle:hover {
   background: var(--hi);
   color: var(--ink);
+}
+/* El botón de idioma tiene un toque de acento para distinguirse */
+.lang-toggle {
+  border-color: oklch(from var(--accent) l c h / 0.35);
+  color: var(--accent);
+}
+.lang-toggle:hover {
+  border-color: var(--accent);
+  color: var(--accent);
 }
 .topbar-meta .dot {
   width: 8px; height: 8px; border-radius: 50%;

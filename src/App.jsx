@@ -1,25 +1,39 @@
 import { useEffect, useState } from "react";
-import { RESUME, SECTIONS } from "./data.js";
+import { RESUME } from "./data.js";
+import { LanguageProvider, useLanguage } from "./context/LanguageContext.jsx";
 import { TopBar, SideNav, Footer } from "./components/Chrome.jsx";
 import { Intro } from "./components/Intro.jsx";
 import { Experience } from "./components/Experience.jsx";
 import { Learning } from "./components/Learning.jsx";
 import { OffHours } from "./components/OffHours.jsx";
 
-export default function App() {
-  // Theme persists across reloads
+// IDs de las secciones — nunca cambian, son anclas del DOM
+const SECTION_IDS = ["intro", "experience", "learning", "off-hours"];
+
+function AppContent() {
+  const { t, toggleLang } = useLanguage();
+
+  // El tema persiste entre recargas
   const [theme, setTheme] = useState(() => {
     if (typeof window === "undefined") return "light";
     return localStorage.getItem("theme") || "dark";
   });
   const [active, setActive] = useState("intro");
 
+  // Secciones con etiquetas traducidas
+  const sections = [
+    { id: "intro",      label: t.nav.intro,      idx: "01" },
+    { id: "experience", label: t.nav.experience,  idx: "02" },
+    { id: "learning",   label: t.nav.learning,    idx: "03" },
+    { id: "off-hours",  label: t.nav.offHours,    idx: "04" },
+  ];
+
   useEffect(() => {
     document.documentElement.dataset.theme = theme;
     localStorage.setItem("theme", theme);
   }, [theme]);
 
-  // Track which section is in view for the side-nav
+  // Detecta qué sección está visible para resaltar en la nav lateral
   useEffect(() => {
     const observer = new IntersectionObserver(
       (entries) => {
@@ -30,8 +44,8 @@ export default function App() {
       },
       { rootMargin: "-30% 0px -40% 0px", threshold: [0, 0.25, 0.5, 0.75, 1] }
     );
-    SECTIONS.forEach((s) => {
-      const el = document.getElementById(s.id);
+    SECTION_IDS.forEach((id) => {
+      const el = document.getElementById(id);
       if (el) observer.observe(el);
     });
     return () => observer.disconnect();
@@ -44,10 +58,12 @@ export default function App() {
 
   return (
     <>
-      <SideNav sections={SECTIONS} active={active} onJump={scrollTo} />
+      <SideNav sections={sections} active={active} onJump={scrollTo} />
       <TopBar
         theme={theme}
         onToggleTheme={() => setTheme(theme === "dark" ? "light" : "dark")}
+        onToggleLang={toggleLang}
+        t={t}
       />
       <main className="stage">
         <Intro resume={RESUME} />
@@ -57,5 +73,13 @@ export default function App() {
         <Footer email={RESUME.email} site={RESUME.site} />
       </main>
     </>
+  );
+}
+
+export default function App() {
+  return (
+    <LanguageProvider>
+      <AppContent />
+    </LanguageProvider>
   );
 }
