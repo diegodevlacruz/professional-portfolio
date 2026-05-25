@@ -13,22 +13,33 @@ export function SectionHeader({ idx, kicker, title, sub }) {
   );
 }
 
-export function TopBar({ theme, onToggleTheme }) {
+export function TopBar({ theme, onToggleTheme, onToggleLang, t }) {
   return (
     <header className="topbar">
       <div className="topbar-mark">
         <span className="mono">D.dlC</span>
       </div>
       <div className="topbar-right">
+        {/* Botón de idioma — muestra el idioma al que se puede cambiar */}
+        <button
+          className="lang-toggle mono"
+          onClick={onToggleLang}
+          aria-label="Toggle language"
+        >
+          {t.topbar.langButton}
+        </button>
+
+        {/* Botón de tema */}
         <button
           className="theme-toggle mono"
           onClick={onToggleTheme}
           aria-label="Toggle theme"
         >
-          {theme === "dark" ? "☀ Light" : "☾ Dark"}
+          {theme === "dark" ? t.topbar.themeLight : t.topbar.themeDark}
         </button>
+
         <div className="topbar-meta mono">
-          <span className="dot" /> Available · Q2 2026
+          <span className="dot" /> {t.topbar.available}
         </div>
       </div>
     </header>

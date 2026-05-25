@@ -1,6 +1,9 @@
 import { TechIcon } from "./Icons.jsx";
+import { useLanguage } from "../context/LanguageContext.jsx";
 
 export function Intro({ resume, showDots = true }) {
+  const { t } = useLanguage();
+
   return (
     <section id="intro" data-screen-label="01 Intro" className="sec sec-intro">
       {showDots && <DotField />}
@@ -10,7 +13,7 @@ export function Intro({ resume, showDots = true }) {
           <p className="eyebrow mono">
             <span className="eyebrow-idx">01</span>
             <span className="eyebrow-divider" />
-            <span>Hello — currently leading APIs in Mexico City</span>
+            <span>{t.intro.eyebrow}</span>
           </p>
 
           <h1 className="display">
@@ -27,7 +30,8 @@ export function Intro({ resume, showDots = true }) {
             <span className="years-pill mono">{resume.yearsExp}+ yrs</span>
           </div>
 
-          <p className="lede">{resume.about}</p>
+          {/* Descripción "about" traducida */}
+          <p className="lede">{t.resume.about}</p>
 
           <div className="contact-row mono">
             <ContactBit icon="Pin"   text={resume.location} />
@@ -41,12 +45,12 @@ export function Intro({ resume, showDots = true }) {
           <PhotoSlot />
           <div className="photo-tag mono">
             <span className="photo-tag-dot" />
-            <span>Mexico City · GMT-6</span>
+            <span>{t.intro.timezone}</span>
           </div>
         </div>
       </div>
 
-      <TechMarquee stack={resume.stack} />
+      <TechMarquee stack={resume.stack} stackNotes={t.resume.stackNotes} label={t.intro.stackLabel} />
     </section>
   );
 }
@@ -93,19 +97,21 @@ function DotField() {
   );
 }
 
-function TechMarquee({ stack }) {
+function TechMarquee({ stack, stackNotes, label }) {
   return (
     <div className="tech-marquee">
-      <div className="tech-marquee-label mono">Tech stack</div>
+      <div className="tech-marquee-label mono">{label}</div>
       <ul className="tech-marquee-list">
         {stack.map((s) => {
           const Icon = TechIcon[s.icon];
+          // Usa la nota traducida si existe, si no cae al original de data.js
+          const note = stackNotes?.[s.key] ?? s.note;
           return (
             <li key={s.key} className="tech-chip">
               <span className="tech-chip-icon"><Icon size={20} /></span>
               <span className="tech-chip-body">
                 <span className="tech-chip-name">{s.key}</span>
-                <span className="tech-chip-note mono">{s.note}</span>
+                <span className="tech-chip-note mono">{note}</span>
               </span>
             </li>
           );

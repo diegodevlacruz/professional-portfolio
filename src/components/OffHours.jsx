@@ -1,18 +1,28 @@
 import { TechIcon } from "./Icons.jsx";
 import { SectionHeader } from "./Chrome.jsx";
+import { useLanguage } from "../context/LanguageContext.jsx";
 
 export function OffHours({ hobbies }) {
+  const { t } = useLanguage();
+
+  // Los íconos vienen de data.js; título y detalle se traducen
+  const translatedHobbies = hobbies.map((h, i) => ({
+    ...h,
+    title:  t.resume.hobbies?.[i]?.title  ?? h.title,
+    detail: t.resume.hobbies?.[i]?.detail ?? h.detail,
+  }));
+
   return (
     <section id="off-hours" data-screen-label="04 Off-hours" className="sec sec-hobbies">
       <SectionHeader
         idx="04"
-        kicker="When the IDE is closed"
-        title="Off-hours"
-        sub="What I do when I'm not pushing to main."
+        kicker={t.offHours.kicker}
+        title={t.offHours.title}
+        sub={t.offHours.sub}
       />
 
       <ul className="hobby-grid">
-        {hobbies.map((h, i) => {
+        {translatedHobbies.map((h, i) => {
           const Icon = TechIcon[h.icon] || TechIcon.Spark;
           return (
             <li key={i} className="hobby-card">
