@@ -6,7 +6,7 @@ export const RESUME = {
   location: "Mexico City, MX",
   email: "diego.dlacruz@gmail.com",
   phone: "+52 311 263 7332",
-  site: "diegodevlacruz.com",
+  linkedIn: "in/diegodevlacruz/",
   yearsExp: 9,
   about:
     "Full Stack Developer with 9+ years building scalable backend systems and full-stack solutions for enterprise environments. Skilled in Java, Spring Boot, REST APIs and modern frontend frameworks. Adept at optimizing performance, improving development processes," + 
@@ -104,7 +104,7 @@ export const RESUME = {
   hobbies: [
     { title: "Open-source tinkering", icon: "Git",         detail: "Side projects that turn into Friday-night refactors." },
     { title: "Trail hiking",          icon: "Mountain",    detail: "Weekends out of the city — Ajusco, Nevado de Toluca, Cumbres." },
-    { title: "Reading tech & sci-fi", icon: "Book",        detail: "Currently on clean-architecture and Ted Chiang." },
+    { title: "Reading tech & sci-fi", icon: "Book",        detail: "Currently on The War of The worlds and The origin of Dan Brown." },
     { title: "Strategy games",        icon: "Controller",  detail: "Co-op campaigns and turn-based — same brain as debugging." },
     { title: "Music & podcasts",      icon: "Headphones",  detail: "Lo-fi while coding, podcasts on AI and software craft." },
     { title: "Early mornings",        icon: "Sun",         detail: "Coffee, run, deep work — the most productive 90 minutes of the day." },

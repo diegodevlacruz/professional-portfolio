@@ -36,8 +36,8 @@ export function Intro({ resume, showDots = true }) {
           <div className="contact-row mono">
             <ContactBit icon="Pin"   text={resume.location} />
             <ContactBit icon="Mail"  text={resume.email} />
-            <ContactBit icon="Phone" text={resume.phone} />
-            <ContactBit icon="Globe" text={resume.site} />
+            {/* <ContactBit icon="Phone" text={resume.phone} />  */}
+            <ContactBit icon="LinkedIn" text={resume.linkedIn} />
           </div>
         </div>
 
